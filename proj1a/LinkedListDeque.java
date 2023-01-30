@@ -4,7 +4,7 @@ public class LinkedListDeque<T> {
     private Node sentinel;
     private int size;
 
-    public class Node {
+    private class Node {
         private Node prev;
         private T item;
         private Node next;
@@ -23,15 +23,15 @@ public class LinkedListDeque<T> {
     }
 
     public LinkedListDeque() {
-        T trans = (T) new Object(); 
-        //T[] transs=(T[]) new Object[6];
+        T trans = (T) new Object();
+        // T[] transs=(T[]) new Object[6];
         sentinel = new Node(trans);
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
         size = 0;
     }
 
-    public LinkedListDeque(T item0) {
+    private LinkedListDeque(T item0) {
         T trans = (T) new Object();
         sentinel = new Node(trans);
         sentinel.next = new Node(item0);
@@ -87,10 +87,11 @@ public class LinkedListDeque<T> {
 
     /** Return true if deque is empty, false otherwise. */
     public boolean isEmpty() {
-        if (size == 0)
+        if (size == 0) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     public int size() {
@@ -119,6 +120,9 @@ public class LinkedListDeque<T> {
      */
     public T removeFirst() {
         if (size == 1) {
+            sentinel.next = null;
+            sentinel.prev = null;
+            size--;
             return null;
         }
         Node evacuate = sentinel.next;
@@ -126,11 +130,15 @@ public class LinkedListDeque<T> {
         Node new1 = sentinel.next.next;
         evacuate = new1;
         new1.prev = sentinel;
+        size--;
         return first;
     }
 
     public T removeLast() {
         if (size == 1) {
+            sentinel.next = null;
+            sentinel.prev = null;
+            size--;
             return null;
         }
         Node evacuate = sentinel.prev;
@@ -138,6 +146,7 @@ public class LinkedListDeque<T> {
         Node new1 = sentinel.prev.prev;
         evacuate = new1;
         new1.next = sentinel;
+        size--;
         return last;
     }
 
