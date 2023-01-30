@@ -42,6 +42,19 @@ public class LinkedListDeque<T> {
         size = 1;
     }
 
+    private LinkedListDeque(Node node) {
+        T trans = (T) new Object();
+        sentinel = new Node(trans);
+        sentinel.next = node;
+        Node ptr = node;
+        while (ptr != null) {
+            ptr = ptr.next;
+        }
+        ptr = sentinel;
+        sentinel.prev = ptr;
+        node.prev = sentinel;
+    }
+
     /** Add an item of type T to the front of the deque */
     public void addFirst(T item) {
         if (size == 0) {
@@ -87,11 +100,7 @@ public class LinkedListDeque<T> {
 
     /** Return true if deque is empty, false otherwise. */
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (size == 0);
     }
 
     public int size() {
@@ -125,10 +134,9 @@ public class LinkedListDeque<T> {
             size--;
             return null;
         }
-        Node evacuate = sentinel.next;
-        T first = evacuate.item;
+        T first = sentinel.next.item;
         Node new1 = sentinel.next.next;
-        evacuate = new1;
+        sentinel.next = new1;
         new1.prev = sentinel;
         size--;
         return first;
@@ -141,10 +149,9 @@ public class LinkedListDeque<T> {
             size--;
             return null;
         }
-        Node evacuate = sentinel.prev;
-        T last = evacuate.item;
+        T last = sentinel.prev.item;
         Node new1 = sentinel.prev.prev;
-        evacuate = new1;
+        sentinel.prev = new1;
         new1.next = sentinel;
         size--;
         return last;

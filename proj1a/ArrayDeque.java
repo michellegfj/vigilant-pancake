@@ -12,12 +12,12 @@ public class ArrayDeque<T> {
     }
 
     /** expand the size of items */
-    private int expand(int NF) {
+    private int expand(int nf) {
         T[] evolve = (T[]) new Object[2 * size];
-        int befBeh = NF;
+        int befBeh = nf;
         int i = 0;
         evolve[i++] = items[befBeh++];
-        while (befBeh != NF) {
+        while (befBeh != nf) {
             if (befBeh == size) {
                 befBeh = 0;
                 continue;
@@ -31,10 +31,10 @@ public class ArrayDeque<T> {
     public void addFirst(T item) {
         if (items[nextFirst] != null) {
             if (nextFirst == nextLast + 1) {
-                int nextLast = expand(nextFirst - 1);
+                nextLast = expand(nextFirst - 1);
             } else {
                 if (nextFirst == nextLast - 1) {
-                    int nextLast = expand(nextFirst + 1);
+                    nextLast = expand(nextFirst + 1);
                 }
             }
             nextFirst = items.length - 1;
@@ -65,10 +65,7 @@ public class ArrayDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (size != 0) {
-            return false;
-        }
-        return true;
+        return (size == 0);
     }
 
     public int size() {
@@ -76,20 +73,20 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        int NF = nextFirst;
-        if (NF == 0) {
-            NF = items.length - 1;
+        int nf = nextFirst;
+        if (nf == 0) {
+            nf = items.length - 1;
         }
-        System.out.print(items[NF]);
-        NF--;
-        while (NF != nextFirst) {
-            if (items[NF] == null) {
-                NF--;
+        System.out.print(items[nf]);
+        nf--;
+        while (nf != nextFirst) {
+            if (items[nf] == null) {
+                nf--;
                 continue;
             }
             System.out.print(" ");
-            System.out.print(items[NF]);
-            NF--;
+            System.out.print(items[nf]);
+            nf--;
         }
         return;
     }
@@ -112,7 +109,7 @@ public class ArrayDeque<T> {
             return null;
         if (nextLast == 0) {
             nextLast = items.length - 1;
-        }else {
+        } else {
             nextLast--;
         }
         T rt = items[nextLast];
