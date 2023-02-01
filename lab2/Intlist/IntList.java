@@ -75,7 +75,7 @@ public class IntList {
 
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
-    /**
+        /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B. May modify items of A. Don't use 'new'.
      */
@@ -107,7 +107,12 @@ public class IntList {
         if (B == null) {
             return A;
         } else {
-            IntList Afinal = new IntList(A.first, A.rest);
+            IntList Afinal = new IntList(A.first, null);
+            IntList afptr = Afinal;
+            for (IntList aptr = A.rest; aptr != null; aptr = aptr.rest) {
+                afptr.rest = new IntList(aptr.first, null);
+                afptr = afptr.rest;
+            }
             IntList AShadowman = Afinal;
             while (AShadowman.rest != null) {
                 AShadowman = AShadowman.rest;
