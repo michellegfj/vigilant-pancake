@@ -92,31 +92,11 @@
       <updated>1675158076280</updated>
       <workItem from="1675158077573" duration="6292000" />
       <workItem from="1675216208512" duration="1774000" />
-      <workItem from="1675219065545" duration="76000" />
+      <workItem from="1675219065545" duration="616000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/IntList/IntList.java</url>
-          <line>36</line>
-          <properties class="IntList" method="reverse">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/IntList/IntListTest.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

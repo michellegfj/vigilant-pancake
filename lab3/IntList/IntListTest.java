@@ -23,8 +23,10 @@ public class IntListTest {
         IntList ordered2 = IntList.of(1);
         IntList reversed1 = IntList.of(5, 4, 3, 2, 1);
         IntList reversed2 = IntList.of(1);
-        assertEquals(reversed1, ordered1.reverse());
-        assertEquals(reversed2, ordered2.reverse());
+        ordered1.reverse();
+        ordered2.reverse();
+        assertEquals(reversed1,ordered1);
+        assertEquals(reversed2,ordered2);
     }
 
     @Test

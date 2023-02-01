@@ -12,11 +12,11 @@ public class IntList {
     /**
      * First element of list.
      */
-    public int first;
+    private int first;
     /**
      * Remaining elements of list.
      */
-    public IntList rest;
+    private IntList rest;
 
     /**
      * A List with first FIRST0 and rest REST0.
@@ -34,10 +34,11 @@ public class IntList {
         this(0, null);
     }
 
-    public IntList reverse() {
+    public void reverse() {
         if (rest == null) {
-            IntList x= new IntList(first,rest);
-            return x;
+            return;
+            //IntList x = new IntList(first,rest);
+            //return x;
         }
         IntList appendList = IntList.of(first);
         IntList ptr = rest;
@@ -45,9 +46,9 @@ public class IntList {
             appendList = new IntList(ptr.first, appendList);
             ptr = ptr.rest;
         }
-        // first = appendList.first;
-        // rest = appendList.rest;
-        return appendList;
+        first = appendList.first;
+        rest = appendList.rest;
+        //return appendList;
     }
 
     /**
@@ -123,18 +124,18 @@ public class IntList {
         if (B == null) {
             return A;
         } else {
-            IntList Afinal = new IntList(A.first, null);
-            IntList afptr = Afinal;
+            IntList afinal = new IntList(A.first, null);
+            IntList afptr = afinal;
             for (IntList aptr = A.rest; aptr != null; aptr = aptr.rest) {
                 afptr.rest = new IntList(aptr.first, null);
                 afptr = afptr.rest;
             }
-            IntList AShadowman = Afinal;
-            while (AShadowman.rest != null) {
-                AShadowman = AShadowman.rest;
+            IntList aShqdowman = afinal;
+            while (aShqdowman.rest != null) {
+                aShqdowman = aShqdowman.rest;
             }
-            AShadowman.rest = new IntList(B.first, B.rest);
-            return Afinal;
+            aShqdowman.rest = new IntList(B.first, B.rest);
+            return afinal;
         }
     }
 
