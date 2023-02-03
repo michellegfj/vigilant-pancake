@@ -34,21 +34,25 @@ public class IntList {
         this(0, null);
     }
 
-    public void reverse() {
-        if (rest == null) {
-            return;
-            //IntList x = new IntList(first,rest);
-            //return x;
+    public static IntList reverse(IntList A) {
+        if (A == null) {
+            return null;
         }
-        IntList appendList = IntList.of(first);
-        IntList ptr = rest;
-        while (ptr != null) {
-            appendList = new IntList(ptr.first, appendList);
-            ptr = ptr.rest;
+        if (A.rest == null) {
+            return A;
         }
-        first = appendList.first;
-        rest = appendList.rest;
-        //return appendList;
+        IntList appendList = IntList.of(A.first);
+        A = A.rest;
+        while (A != null) {
+            appendList = new IntList(A.first, appendList);
+            A = A.rest;
+        }
+        // IntList ptr = A.rest;
+        // while (ptr != null) {
+        // appendList = new IntList(ptr.first, appendList);
+        // ptr = ptr.rest;
+        // }
+        return appendList;
     }
 
     /**

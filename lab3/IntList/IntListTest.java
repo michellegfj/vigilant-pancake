@@ -20,13 +20,27 @@ public class IntListTest {
     @Test
     public void testReverse() {
         IntList ordered1 = IntList.of(1, 2, 3, 4, 5);
+        IntList ptr1 = IntList.of(1, 2, 3, 4, 5);
         IntList ordered2 = IntList.of(1);
+        IntList ptr2 = IntList.of(1);
+        IntList ordered3 = null;
+        IntList ptr3 = null;
+
         IntList reversed1 = IntList.of(5, 4, 3, 2, 1);
         IntList reversed2 = IntList.of(1);
-        ordered1.reverse();
-        ordered2.reverse();
-        assertEquals(reversed1,ordered1);
-        assertEquals(reversed2,ordered2);
+        IntList reversed3 = null;
+
+        ordered1 = IntList.reverse(ordered1);
+        ordered2 = IntList.reverse(ordered2);
+        ordered3 = IntList.reverse(ordered3);
+
+        assertEquals(reversed1, ordered1);
+        assertEquals(reversed2, ordered2);
+        assertEquals(reversed3, ordered3);
+
+        assertNotEquals(ordered1, ptr1);
+        // assertNotEquals(ordered2, ptr2);
+        // assertNotEquals(ordered3, ptr3);
     }
 
     @Test
