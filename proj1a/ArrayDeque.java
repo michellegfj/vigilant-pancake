@@ -10,6 +10,7 @@ public class ArrayDeque<T> {
         size = 0;
         nextFirst = 1;
         nextLast = 2;
+        start = 1;
     }
 
     /** expand the size of items */
@@ -29,15 +30,34 @@ public class ArrayDeque<T> {
         return i;
     }
 
+    private int shrink(int nf) {
+        T[] evolve = (T[]) new Object[size / 2];
+        int befBeh = nf;
+        int i = 0;
+        evolve[i++] = items[befBeh++];
+        while (befBeh != nf) {
+            if (befBeh == size) {
+                befBeh = 0;
+                continue;
+            } else if (items[befBeh] == null) {
+                befBeh++;
+                continue;
+            }
+            evolve[i++] = items[befBeh++];
+        }
+        items = evolve;
+        return i;
+    }
+
     public void addFirst(T item) {
         if (items[nextFirst] != null) {
             nextLast = expand(nextLast);
             nextFirst = items.length - 1;
         }
         items[nextFirst] = item;
-        if (size == 0) {
-            start = nextFirst;
-        }
+        // if (size == 0) {
+        // start = nextFirst;
+        // }
         if (nextFirst != 0) {
             nextFirst--;
         } else {
@@ -53,9 +73,9 @@ public class ArrayDeque<T> {
             nextFirst = items.length - 1;
         }
         items[nextLast] = item;
-        if (size == 0) {
-            start = nextLast;
-        }
+        // if (size == 0) {
+        // start = nextLast;
+        // }
         if (nextLast != items.length - 1) {
             nextLast++;
         } else {
@@ -104,6 +124,10 @@ public class ArrayDeque<T> {
         T rt = items[nextFirst];
         items[nextFirst] = null;
         size--;
+        if (size < items.length / 2 && size > 15) {
+            nextLast = shrink(nextFirst);
+            nextFirst = 0;
+        }
         return rt;
     }
 
@@ -119,6 +143,10 @@ public class ArrayDeque<T> {
         T rt = items[nextLast];
         items[nextLast] = null;
         size--;
+        if (size < items.length / 2 && size > 15) {
+            nextLast = shrink(nextFirst);
+            nextFirst = 0;
+        }
         return rt;
     }
 

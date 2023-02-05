@@ -33,14 +33,14 @@ public class TestDeque {
 
     public static void testGet() {
         ArrayDeque<Integer> ad = new ArrayDeque<>();
-        ad.addLast(0);
-        ad.removeLast(); // 0
-        ad.addFirst(2);
-        ad.removeFirst(); // 2
-        ad.addFirst(4);
-        ad.removeFirst(); // 4
-        ad.addLast(6);
-        System.out.println(ad.get(0));
+        ad.addFirst(0);
+        ad.removeLast();      //0
+        ad.addLast(2);
+        ad.addLast(3);
+        ad.addLast(4);
+        ad.addLast(5);
+        ad.addFirst(6);
+        System.out.println(ad.get(0)); // 6
     }
 
     public static void main(String[] args) {
