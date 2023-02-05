@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+
 public class TestDeque {
     public static void testAdd() {
         // LinkedListDeque raw = new LinkedListDeque<Character>('s');
@@ -29,9 +31,22 @@ public class TestDeque {
         return lld.removeLast();
     }
 
+    public static void testGet() {
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+        ad.addLast(0);
+        ad.removeLast(); // 0
+        ad.addFirst(2);
+        ad.removeFirst(); // 2
+        ad.addFirst(4);
+        ad.removeFirst(); // 4
+        ad.addLast(6);
+        System.out.println(ad.get(0));
+    }
+
     public static void main(String[] args) {
         // testAdd();
         // testExpand();
-        int tr = testRemoveFirst();
+        // int tr = testRemoveFirst();
+        testGet();
     }
 }
