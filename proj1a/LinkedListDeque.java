@@ -9,11 +9,11 @@ public class LinkedListDeque<T> {
         private T item;
         private Node next;
 
-        public Node() {
-            prev = null;
-            item = null;
-            next = null;
-        }
+        // public Node() {
+        // prev = null;
+        // item = null;
+        // next = null;
+        // }
 
         public Node(T item0) {
             prev = null;
@@ -128,12 +128,16 @@ public class LinkedListDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeFirst() {
-        if (size == 1) {
-            sentinel.next = null;
-            sentinel.prev = null;
-            size--;
+        if (size == 0) {
             return null;
         }
+        // if (size == 1) {
+        // T first = sentinel.next.item;
+        // sentinel.next = null;
+        // sentinel.prev = null;
+        // size--;
+        // return first;
+        // }
         T first = sentinel.next.item;
         Node new1 = sentinel.next.next;
         sentinel.next = new1;
@@ -143,12 +147,10 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
-        if (size == 1) {
-            sentinel.next = null;
-            sentinel.prev = null;
-            size--;
+        if (size == 0) {
             return null;
         }
+
         T last = sentinel.prev.item;
         Node new1 = sentinel.prev.prev;
         sentinel.prev = new1;
