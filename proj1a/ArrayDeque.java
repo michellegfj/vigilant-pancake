@@ -30,13 +30,14 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         if (items[nextFirst] != null) {
-            if (nextFirst == nextLast + 1) {
-                nextLast = expand(nextFirst - 1);
-            } else {
-                if (nextFirst == nextLast - 1) {
-                    nextLast = expand(nextFirst + 1);
-                }
-            }
+            nextLast = expand(nextLast);
+            // if (nextFirst == nextLast + 1) {
+            // nextLast = expand(nextFirst - 1);
+            // } else {
+            // if (nextFirst == nextLast - 1) {
+            // nextLast = expand(nextFirst + 1);
+            // }
+            // }
             nextFirst = items.length - 1;
         }
         items[nextFirst] = item;
@@ -52,7 +53,7 @@ public class ArrayDeque<T> {
     public void addLast(T item) {
         if (items[nextLast] != null) {
             nextLast = expand(nextLast);
-            nextFirst = items.length;
+            nextFirst = items.length - 1;
         }
         items[nextLast] = item;
         if (nextLast != items.length - 1) {

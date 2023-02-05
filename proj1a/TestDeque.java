@@ -24,7 +24,7 @@ public class TestDeque {
     }
 
     public static int testRemoveFirst() {
-        LinkedListDeque<Integer> lld = new LinkedListDeque<>();
+        ArrayDeque<Integer> lld = new ArrayDeque<>();
         lld.addFirst(2);
         return lld.removeLast();
     }
