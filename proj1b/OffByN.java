@@ -5,7 +5,7 @@ public class OffByN implements CharacterComparator {
         gap = N;
     }
 
-    public int getGap() {
+    private int getGap() {
         return gap;
     }
 

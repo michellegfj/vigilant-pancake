@@ -13,8 +13,8 @@ public class TestPalindrome {
     public void testIsPalindrome() {
         // assertTrue(Palindrome.isPalindrome(Palindrome.wordToDeque("racecar")));
         // assertFalse(Palindrome.isPalindrome(Palindrome.wordToDeque("cat")));
-        assertFalse(Palindrome.isPalindrome("cat", obo));
-        assertTrue(Palindrome.isPalindrome("flake", obo));
+        assertFalse(palindrome.isPalindrome("cat", obo));
+        assertTrue(palindrome.isPalindrome("flake", obo));
     }
 
     @Test
