@@ -5,10 +5,11 @@ package synthesizer;
 import java.util.Iterator;
 
 import javax.management.RuntimeErrorException;
+import synthesizer.AbstractBoundedQueue;
 
 //TODO: Make sure to make this class and all of its methods public
 //TODO: Make sure to make this class extend AbstractBoundedQueue<t>
-public class ArrayRingBuffer<T> extends synthesizer.AbstractBoundedQueue<T> {
+public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /* Index for the next dequeue or peek. */
     private int first; // index for the next dequeue or peek
     /* Index for the next enqueue. */
@@ -40,7 +41,8 @@ public class ArrayRingBuffer<T> extends synthesizer.AbstractBoundedQueue<T> {
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
         if (fillCount >= capacity) {
-            increase();
+            /*increase();*/
+            throw new RuntimeException();
         }
         rb[last] = x;
         if (last < capacity - 1) {
@@ -52,6 +54,7 @@ public class ArrayRingBuffer<T> extends synthesizer.AbstractBoundedQueue<T> {
         return;
     }
 
+    /*
     private void increase() {
         T[] rbNew = (T[]) new Object[capacity * 2];
         int it = 0;
@@ -64,15 +67,14 @@ public class ArrayRingBuffer<T> extends synthesizer.AbstractBoundedQueue<T> {
                 first = 0;
             }
             rbNew[it++] = rb[first++];
-
         }
         rb = rbNew;
         first = 0;
         last = it;
         capacity *= 2;
         return;
-    }
-
+    }*/
+    
     /**
      * Dequeue oldest item in the ring buffer. If the buffer is empty, then
      * throw new RuntimeException("Ring buffer underflow"). Exceptions
@@ -84,7 +86,7 @@ public class ArrayRingBuffer<T> extends synthesizer.AbstractBoundedQueue<T> {
             throw new RuntimeException("Ring buffer underflow");
         }
         T returnItem = rb[first];
-        //rb[first] = null;
+        /* rb[first] = null; */
         if (first == 0) {
             first = capacity - 1;
             while (rb[first] == null) {
