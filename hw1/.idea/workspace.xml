@@ -34,7 +34,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.TestGuitarString.testPluckTheAString">
+  <component name="RunManager" selected="JUnit.TestGuitarString.testTic">
     <configuration name="TestArrayRingBuffer.someTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hw1" />
       <extension name="coverage">
@@ -100,8 +100,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestGuitarString.testPluckTheAString" />
         <item itemvalue="JUnit.TestGuitarString.testTic" />
+        <item itemvalue="JUnit.TestGuitarString.testPluckTheAString" />
         <item itemvalue="JUnit.TestGuitarString" />
         <item itemvalue="JUnit.TestArrayRingBuffer.someTest" />
       </list>
@@ -116,7 +116,8 @@
       <option name="presentableId" value="Default" />
       <updated>1676027298965</updated>
       <workItem from="1676027298988" duration="4387000" />
-      <workItem from="1676100357228" duration="7900000" />
+      <workItem from="1676100357228" duration="9692000" />
+      <workItem from="1676298985673" duration="558000" />
     </task>
     <servers />
   </component>
@@ -124,6 +125,15 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/synthesizer/ArrayRingBuffer.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="synthesizer.ArrayRingBuffer" memberName="rb" />

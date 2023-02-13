@@ -41,8 +41,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
         if (fillCount >= capacity) {
-            /*increase();*/
-            throw new RuntimeException();
+            throw new RuntimeException("Ring Buffer OVerflow");
         }
         rb[last] = x;
         if (last < capacity - 1) {
@@ -54,27 +53,6 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         return;
     }
 
-    /*
-    private void increase() {
-        T[] rbNew = (T[]) new Object[capacity * 2];
-        int it = 0;
-        rbNew[it++] = rb[first++];
-        while (first != last) {
-            if (first == capacity) {
-                if (it > fillCount) {
-                    break;
-                }
-                first = 0;
-            }
-            rbNew[it++] = rb[first++];
-        }
-        rb = rbNew;
-        first = 0;
-        last = it;
-        capacity *= 2;
-        return;
-    }*/
-    
     /**
      * Dequeue oldest item in the ring buffer. If the buffer is empty, then
      * throw new RuntimeException("Ring buffer underflow"). Exceptions
@@ -106,6 +84,33 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
         return rb[first];
+    }
+
+    private class RingIterator implements Iterator<T>{
+        private int ptr;
+
+        public RingIterator() {
+            ptr = first;
+        }
+
+        public boolean hasNext() {
+            return (ptr != last);
+        }
+
+        public T next() {
+            T returnValue = rb[ptr];
+            ptr++;
+            if (ptr == capacity) {
+                ptr = 0;
+            }
+            return returnValue;
+        }
+
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new RingIterator();
     }
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
